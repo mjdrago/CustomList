@@ -9,25 +9,34 @@ namespace CreateListClass
 {
     public class CustomList<T>:IEnumerable<T>
     {
-        T[] data;
+        private T[] data;
+        private int count;
+        private int capacity;
+
         public CustomList()
         {
             data = new T[0];
+            count = 0;
+            capacity = 0;
         }
         public CustomList(int sizeOfInitialArray)
         {
             data = new T[sizeOfInitialArray];
+            count = 0;
+            capacity = sizeOfInitialArray;
         }
         public CustomList(T[] initialArray)
         {
-
+            data = initialArray;
+            count = initialArray.Length;
+            capacity = initialArray.Length;
         }
 
         public int Capacity
         {
             get
             {
-                return 5;
+                return capacity;
             }
             set
             {
@@ -38,7 +47,7 @@ namespace CreateListClass
         {
             get
             {
-                return 5;
+                return count;
             }
         }
         public T this[int i]
@@ -47,12 +56,48 @@ namespace CreateListClass
             {
                 return data[i];
             }
+            set
+            {
+
+            }
         }
         
         public void Add(T elementToAdd)
         {
 
         }
+        private bool CheckIfNewArrayNeeded (int numberToAdd)
+        {
+            if (numberToAdd + count > capacity)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private T[] CreateNewArray(int numberToAdd,int extraRoom)
+        {
+            return new T[count + numberToAdd + extraRoom];
+        }
+
+        private void InputSingleEntryToArray(T[] targetArray, int locationToAdd, T valueToAdd)
+        {
+            targetArray[locationToAdd] = valueToAdd;
+        }
+
+        private void InputArrayData(T[] targetArray,T[] dataToAdd,int numberOfItemsToAdd)
+        {
+            for (int i = 0; i < numberOfItemsToAdd; i++)
+            {
+                targetArray[i] = dataToAdd[i];
+                InputSingleEntryToArray(targetArray, i, dataToAdd[i]);
+            }
+        }
+
+
 
         public IEnumerator<T> GetEnumerator()
         {

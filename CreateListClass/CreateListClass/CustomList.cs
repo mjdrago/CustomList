@@ -64,7 +64,20 @@ namespace CreateListClass
         
         public void Add(T elementToAdd)
         {
-
+            if (CheckIfNewArrayNeeded(1))
+            {
+                T[] newArray = CreateNewArray(1, 3);
+                ChangeCapacity(newArray.Length);
+                InputArrayData(newArray, data, count);
+                InputSingleEntryToArray(newArray, count, elementToAdd);
+                IncreaseCount(1);
+                UpdateData(newArray);
+            }
+            else
+            {
+                InputSingleEntryToArray(data, count, elementToAdd);
+                IncreaseCount(1);
+            }
         }
         private bool CheckIfNewArrayNeeded (int numberToAdd)
         {
@@ -83,6 +96,18 @@ namespace CreateListClass
             return new T[count + numberToAdd + extraRoom];
         }
 
+        private void IncreaseCount(int amount)
+        {
+            count += amount;
+        }
+        private void DecreaseCount(int amount)
+        {
+            count -= amount;
+        }
+        private void ChangeCapacity(int amount)
+        {
+            capacity = amount;
+        }
         private void InputSingleEntryToArray(T[] targetArray, int locationToAdd, T valueToAdd)
         {
             targetArray[locationToAdd] = valueToAdd;
@@ -92,9 +117,14 @@ namespace CreateListClass
         {
             for (int i = 0; i < numberOfItemsToAdd; i++)
             {
-                targetArray[i] = dataToAdd[i];
+                //targetArray[i] = dataToAdd[i];
                 InputSingleEntryToArray(targetArray, i, dataToAdd[i]);
             }
+        }
+
+        private void UpdateData(T[] newData)
+        {
+            data = newData;
         }
 
 

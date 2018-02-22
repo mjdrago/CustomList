@@ -79,6 +79,8 @@ namespace CreateListClass
                 IncreaseCount(1);
             }
         }
+        public void Remove(T elementToRemove) {
+        }
         private bool CheckIfNewArrayNeeded (int numberToAdd)
         {
             if (numberToAdd + count > capacity)

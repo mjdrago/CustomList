@@ -10,6 +10,14 @@ namespace CreateListClass
     {
         static void Main(string[] args)
         {
+            CustomList<string> foo = new CustomList<string>(5);
+            foo.Add("Poke");
+            Console.WriteLine(foo.Count);
+            Console.WriteLine(foo.Capacity);
+            Console.WriteLine(foo[0]);
+            Console.WriteLine(foo[1]);
+            
+            Console.ReadKey();
         }
     }
 }

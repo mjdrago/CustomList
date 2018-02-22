@@ -180,5 +180,65 @@ namespace CreateListClassTest
             //Assert
             Assert.AreEqual(8, testCreation[3]);
         }
+        [TestMethod]
+        public void RemoveTest_RemoveLastElementFromListWith4UniqueIntValues_Count3()
+        {
+            //Arrange
+            CustomList<int> testCreation = new CustomList<int>() { 1, 2, 3, 4 };
+            //Act
+            testCreation.Remove(4);
+            //Assert
+            Assert.AreEqual(3, testCreation.Count);
+        }
+        [TestMethod]
+        public void RemoveTest_RemoveLastElementFromListWith4UniqueIntValues_Capacity4()
+        {
+            //Arrange
+            CustomList<int> testCreation = new CustomList<int>() { 1, 2, 3, 4 };
+            //Act
+            testCreation.Remove(4);
+            //Assert
+            Assert.AreEqual(4, testCreation.Capacity);
+        }
+        [TestMethod]
+        public void RemoveTest_RemoveLastElementFromListWith4UniqueIntValues_LastIndexHas3()
+        {
+            //Arrange
+            CustomList<int> testCreation = new CustomList<int>() { 1, 2, 3, 4 };
+            //Act
+            testCreation.Remove(4);
+            //Assert
+            Assert.AreEqual(3, testCreation[testCreation.Count - 1]);
+        }
+        [TestMethod]
+        public void RemoveTest_RemoveLastElementFromListWith4UniqueStringValues_Count3()
+        {
+            //Arrange
+            CustomList<string> testCreation = new CustomList<string>() { "Hello", "world", "how", "are" };
+            //Act
+            testCreation.Remove("are");
+            //Assert
+            Assert.AreEqual(3, testCreation.Count);
+        }
+        [TestMethod]
+        public void RemoveTest_RemoveLastElementFromListWith4UniqueStringValues_Capacity4()
+        {
+            //Arrange
+            CustomList<string> testCreation = new CustomList<string>() { "Hello", "world", "how", "are" };
+            //Act
+            testCreation.Remove("are");
+            //Assert
+            Assert.AreEqual(4, testCreation.Capacity);
+        }
+        [TestMethod]
+        public void RemoveTest_RemoveLastElementFromListWith4UniqueStringValues_LastIndexHasHow()
+        {
+            //Arrange
+            CustomList<string> testCreation = new CustomList<string>() { "Hello", "world", "how", "are" };
+            //Act
+            testCreation.Remove("are");
+            //Assert
+            Assert.AreEqual("how", testCreation[testCreation.Count - 1]);
+        }
     }
 }

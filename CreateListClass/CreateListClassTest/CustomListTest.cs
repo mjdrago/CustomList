@@ -28,14 +28,14 @@ namespace CreateListClassTest
             Assert.AreEqual(1, testCreation.Count);
         }
         [TestMethod]
-        public void AddTest_AddAnInt5ToDefaultArray_Capacity4()
+        public void AddTest_AddAnInt5ToDefaultArray_Capacity5()
         {
             //Arrange
             CustomList<int> testCreation = new CustomList<int>();
             //Act
             testCreation.Add(5);
             //Assert
-            Assert.AreEqual(4, testCreation.Capacity);
+            Assert.AreEqual(5, testCreation.Capacity);
         }
         [TestMethod]
         public void AddTest_AddAStringHelloToDefaultArray_StringHelloAtIndex0()
@@ -58,14 +58,14 @@ namespace CreateListClassTest
             Assert.AreEqual(1, testCreation.Count);
         }
         [TestMethod]
-        public void AddTest_AddAStringHelloToDefaultArray_Capacity4()
+        public void AddTest_AddAStringHelloToDefaultArray_Capacity5()
         {
             //Arrange
             CustomList<int> testCreation = new CustomList<int>();
             //Act
             testCreation.Add(5);
             //Assert
-            Assert.AreEqual(4, testCreation.Capacity);
+            Assert.AreEqual(5, testCreation.Capacity);
         }
 
         [TestMethod]
@@ -81,7 +81,7 @@ namespace CreateListClassTest
             Assert.AreEqual(3, testCreation.Count);
         }
         [TestMethod]
-        public void AddTest_AddMultiple3IntsToSizedArray_Capacity4()
+        public void AddTest_AddMultiple3IntsToSizedArray_Capacity8()
         {
             //Arrange
             CustomList<int> testCreation = new CustomList<int>(4);
@@ -90,7 +90,7 @@ namespace CreateListClassTest
             testCreation.Add(7);
             testCreation.Add(1);
             //Assert
-            Assert.AreEqual(4, testCreation.Capacity);
+            Assert.AreEqual(8, testCreation.Capacity);
         }
         [TestMethod]
         public void AddTest_AddMultiple3IntsToSizedArray_Int7AtIndex1()
@@ -117,7 +117,7 @@ namespace CreateListClassTest
             Assert.AreEqual(1, testCreation[2]);
         }
         [TestMethod]
-        public void AddTest_AddMultiple4IntsToSizedArray_Capacity4()
+        public void AddTest_AddMultiple4IntsToSizedArray_Capacity8()
         {
             //Arrange
             CustomList<int> testCreation = new CustomList<int>(4);
@@ -127,7 +127,7 @@ namespace CreateListClassTest
             testCreation.Add(1);
             testCreation.Add(10);
             //Assert
-            Assert.AreEqual(4, testCreation.Capacity);
+            Assert.AreEqual(8, testCreation.Capacity);
         }
         [TestMethod]
         public void AddTest_AddMultiple4IntsToSizedArray_Count4()
@@ -143,7 +143,7 @@ namespace CreateListClassTest
             Assert.AreEqual(4, testCreation.Count);
         }
         [TestMethod]
-        public void AddTest_AddMultiple4IntsToSizedArray_Capacity8()
+        public void AddTest_AddMultiple4IntsToSizedArray_Capacity16()
         {
             //Arrange
             CustomList<int> testCreation = new CustomList<int>(4);
@@ -154,7 +154,7 @@ namespace CreateListClassTest
             testCreation.Add(10);
             testCreation.Add(3);
             //Assert
-            Assert.AreEqual(8, testCreation.Capacity);
+            Assert.AreEqual(16, testCreation.Capacity);
         }
         [TestMethod]
         public void AddTest_AddMultiple4IntsToSizedArray_Count5()

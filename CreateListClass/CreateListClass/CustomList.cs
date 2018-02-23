@@ -15,21 +15,29 @@ namespace CreateListClass
 
         public CustomList()
         {
-            data = new T[0];
+            capacity = 5;
+            data = new T[capacity];
             count = 0;
-            capacity = 0;
         }
         public CustomList(int sizeOfInitialArray)
         {
-            data = new T[sizeOfInitialArray];
-            count = 0;
             capacity = sizeOfInitialArray;
+            data = new T[capacity];
+            count = 0;
         }
         public CustomList(T[] initialArray)
         {
-            data = initialArray;
+            capacity = 5;
+            while (initialArray.Length * 2 >= capacity )
+            {
+                capacity *= 2;
+            }
+            data = new T[capacity];
+            for (int i = 0; i < initialArray.Length; i++)
+            {
+                data[i] = initialArray[i];
+            }
             count = initialArray.Length;
-            capacity = initialArray.Length;
         }
 
         public int Capacity
@@ -54,7 +62,14 @@ namespace CreateListClass
         {
             get
             {
-                return data[i];
+                if (i > capacity - 1 )
+                {
+                    throw new IndexOutOfRangeException();
+                }
+                else
+                {
+                    return data[i];
+                }                
             }
             set
             {
@@ -64,26 +79,18 @@ namespace CreateListClass
         
         public void Add(T elementToAdd)
         {
-            if (CheckIfNewArrayNeeded(1))
+            if (CheckIfNewArrayNeeded(1,capacity))
             {
-                T[] newArray = CreateNewArray(1, 3);
-                ChangeCapacity(newArray.Length);
-                InputArrayData(newArray, data, count);
-                InputSingleEntryToArray(newArray, count, elementToAdd);
-                IncreaseCount(1);
-                UpdateData(newArray);
+                DoubleDataArraySize(1);
             }
-            else
-            {
                 InputSingleEntryToArray(data, count, elementToAdd);
                 IncreaseCount(1);
-            }
         }
         public void Remove(T elementToRemove) {
         }
-        private bool CheckIfNewArrayNeeded (int numberToAdd)
+        private bool CheckIfNewArrayNeeded (int numberToAdd, int maxElements)
         {
-            if (numberToAdd + count > capacity)
+            if ((numberToAdd + count) * 2 > maxElements)
             {
                 return true;
             }
@@ -92,10 +99,21 @@ namespace CreateListClass
                 return false;
             }
         }
-
-        private T[] CreateNewArray(int numberToAdd,int extraRoom)
+        private void DoubleDataArraySize(int numberOfNewElements)
         {
-            return new T[count + numberToAdd + extraRoom];
+            T[] newArray = CreateNewArray(numberOfNewElements);
+            ChangeCapacity(newArray.Length);
+            InputArrayData(newArray, data, count);
+            UpdateData(newArray);
+        }
+        private T[] CreateNewArray(int numberOfNewElements)
+        {
+            int newCapacity = 2 * capacity;
+            while (CheckIfNewArrayNeeded(numberOfNewElements,newCapacity))
+            {
+                newCapacity *= 2;
+            }
+            return new T[newCapacity];
         }
 
         private void IncreaseCount(int amount)

@@ -191,14 +191,14 @@ namespace CreateListClassTest
             Assert.AreEqual(3, testCreation.Count);
         }
         [TestMethod]
-        public void RemoveTest_RemoveLastElementFromListWith4UniqueIntValues_Capacity4()
+        public void RemoveTest_RemoveLastElementFromListWith4UniqueIntValues_Capacity10()
         {
             //Arrange
             CustomList<int> testCreation = new CustomList<int>() { 1, 2, 3, 4 };
             //Act
             testCreation.Remove(4);
             //Assert
-            Assert.AreEqual(4, testCreation.Capacity);
+            Assert.AreEqual(10, testCreation.Capacity);
         }
         [TestMethod]
         public void RemoveTest_RemoveLastElementFromListWith4UniqueIntValues_LastIndexHas3()
@@ -221,14 +221,14 @@ namespace CreateListClassTest
             Assert.AreEqual(3, testCreation.Count);
         }
         [TestMethod]
-        public void RemoveTest_RemoveLastElementFromListWith4UniqueStringValues_Capacity4()
+        public void RemoveTest_RemoveLastElementFromListWith4UniqueStringValues_Capacity10()
         {
             //Arrange
             CustomList<string> testCreation = new CustomList<string>() { "Hello", "world", "how", "are" };
             //Act
             testCreation.Remove("are");
             //Assert
-            Assert.AreEqual(4, testCreation.Capacity);
+            Assert.AreEqual(10, testCreation.Capacity);
         }
         [TestMethod]
         public void RemoveTest_RemoveLastElementFromListWith4UniqueStringValues_LastIndexHasHow()
@@ -239,6 +239,37 @@ namespace CreateListClassTest
             testCreation.Remove("are");
             //Assert
             Assert.AreEqual("how", testCreation[testCreation.Count - 1]);
+        }
+        [TestMethod]
+        public void RemoveTest_RemoveValue8FromIndex2ofUniqueValuedArray_ValueAtIndex2Is5()
+        {
+            //Arrange
+            CustomList<int> testCreation = new CustomList<int>() { 3, 1, 8, 5 };
+            //Act
+            testCreation.Remove(8);
+            //Assert
+            Assert.AreEqual(5, testCreation[2]);
+        }
+        [TestMethod]
+        public void RemoveTest_RemoveValue8FromIndex2ofUniqueValuedArray_Count3()
+        {
+            //Arrange
+            CustomList<int> testCreation = new CustomList<int>() { 3, 1, 8, 5 };
+            //Act
+            testCreation.Remove(8);
+            //Assert
+            Assert.AreEqual(3, testCreation.Count);
+        }
+
+        [TestMethod]
+        public void RemoveTest_TryToRemoveAnValueNotInArray_Count4()
+        {
+            //Arrange
+            CustomList<int> testCreation = new CustomList<int>() { 3, 1, 8, 5 };
+            //Act
+            testCreation.Remove(10);
+            //Assert
+            Assert.AreEqual(4, testCreation.Count);
         }
     }
 }

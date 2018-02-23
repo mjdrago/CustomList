@@ -86,7 +86,8 @@ namespace CreateListClass
                 InputSingleEntryToArray(data, count, elementToAdd);
                 IncreaseCount(1);
         }
-        public void Remove(T elementToRemove) {
+        public bool Remove(T elementToRemove) {
+            return true;
         }
         private bool CheckIfNewArrayNeeded (int numberToAdd, int maxElements)
         {

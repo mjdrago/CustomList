@@ -211,6 +211,16 @@ namespace CreateListClassTest
             Assert.AreEqual(3, testCreation[testCreation.Count - 1]);
         }
         [TestMethod]
+        public void RemoveTest_RemoveLastElementFromListWith4UniqueIntValues_ReturnTrue()
+        {
+            //Arrange
+            CustomList<int> testCreation = new CustomList<int>() { 1, 2, 3, 4 };
+            //Act
+            bool check = testCreation.Remove(4);
+            //Assert
+            Assert.AreEqual(true, check);
+        }
+        [TestMethod]
         public void RemoveTest_RemoveLastElementFromListWith4UniqueStringValues_Count3()
         {
             //Arrange
@@ -270,6 +280,78 @@ namespace CreateListClassTest
             testCreation.Remove(10);
             //Assert
             Assert.AreEqual(4, testCreation.Count);
+        }
+
+        [TestMethod]
+        public void RemoveTest_TryToRemoveAnValueNotInArray_ReturnsFalse()
+        {
+            //Arrange
+            CustomList<int> testCreation = new CustomList<int>() { 3, 1, 8, 5 };
+            //Act
+            bool check = testCreation.Remove(10);
+            //Assert
+            Assert.AreEqual(false, check);
+        }
+
+        [TestMethod]
+        public void Iteration_StringFields_ReturnsText()
+        {
+            //Arrange
+            CustomList<string> testCreation = new CustomList<string>() { "Hello", "World", "Boo", "You" };
+            //Act
+            string phrase = "";
+            foreach (var word in testCreation)
+            {
+                phrase = phrase + word;
+            }
+            //Assert
+            Assert.AreEqual("HelloWorldBooYou", phrase);
+        }
+
+        [TestMethod]
+        public void Iteration_IntFields_ReturnsSum()
+        {
+            //Arrange
+            CustomList<int> testCreation = new CustomList<int>() { 15, 5, 10, 15};
+            //Act
+            int sum = 0;
+            foreach (var number in testCreation)
+            {
+                sum += number;
+            }
+            //Assert
+            Assert.AreEqual(45, sum);
+        }
+
+        [TestMethod]
+        public void ToString_DefaultInitation_StringWithNameAndHowFilled()
+        {
+            //Arrange
+            CustomList<string> testCreation = new CustomList<string>();
+            //Act
+            string output = testCreation.ToString();
+            //Assert
+            Assert.AreEqual("testCreation: 0/5 Spots Filled", output);
+        }
+        [TestMethod]
+        public void ToString_SetCapacityInitation_StringWithNameAndHowFilled()
+        {
+            //Arrange
+            CustomList<string> testCreation = new CustomList<string>(15);
+            //Act
+            string output = testCreation.ToString();
+            //Assert
+            Assert.AreEqual("testCreation: 0/15 Spots Filled", output);
+        }
+        [TestMethod]
+        public void ToString_WithInitialValuesInitation_StringWithNameAndHowFilled()
+        {
+            //Arrange
+            CustomList<string> testCreation = new CustomList<string>(15) {"hello","you","are" };
+            //Act
+            string output = testCreation.ToString();
+            //Assert
+            Assert.AreEqual("testCreation: 3/10 Spots Filled", output);
         }
     }
 }

@@ -86,8 +86,27 @@ namespace CreateListClass
                 InputSingleEntryToArray(data, count, elementToAdd);
                 IncreaseCount(1);
         }
-        public bool Remove(T elementToRemove) {
-            return true;
+        public bool Remove(T elementToRemove)
+        {
+            int indexValue = IndexOf(elementToRemove);
+            if (indexValue >= 0)
+            {
+                RemoveAt(indexValue);
+                return true;
+            }
+            return false;
+        }
+        private int IndexOf(T searchValue)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                if (data[i].Equals(searchValue))
+                {
+                    return i;
+                }
+            }
+            
+            return -1;
         }
         private bool CheckIfNewArrayNeeded (int numberToAdd, int maxElements)
         {
@@ -142,7 +161,32 @@ namespace CreateListClass
                 InputSingleEntryToArray(targetArray, i, dataToAdd[i]);
             }
         }
-
+        private void RemoveAt(int indexToRemove)
+        {
+            if (indexToRemove > count)
+            {
+                throw new IndexOutOfRangeException();
+            }
+            else
+            {
+                T[] newArray = new T[capacity];
+                RemoveOneElement(newArray, data, count, indexToRemove);
+                UpdateData(newArray);
+                DecreaseCount(1);
+            }
+        }
+        private void RemoveOneElement(T[] targetArray,T[] dataToAdd,int numberOfItemsToAdd,int elementToRemove)
+        {
+            int j = 0;
+            for (int i = 0; i < numberOfItemsToAdd; i++)
+            {
+                if (i!=elementToRemove)
+                {
+                    InputSingleEntryToArray(targetArray, j, data[i]);
+                    j += 1;
+                }                
+            }
+        }
         private void UpdateData(T[] newData)
         {
             data = newData;

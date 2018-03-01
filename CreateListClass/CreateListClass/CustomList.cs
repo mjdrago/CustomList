@@ -216,5 +216,13 @@ namespace CreateListClass
         {
             return GetEnumerator();
         }
+        public static CustomList<T> operator +(CustomList<T> valueOne, CustomList<T> valueTwo)
+        {
+            return new CustomList<T>();
+        }
+        public static CustomList<T> operator -(CustomList<T> valueOne, CustomList<T> valueTwo)
+        {
+            return new CustomList<T>();
+        }
     }
 }

@@ -353,5 +353,71 @@ namespace CreateListClassTest
             //Assert
             Assert.AreEqual("3/10 Spots Filled\nIndex 0: hello\nIndex 1: you\nIndex 2: are\n", output);
         }
+        [TestMethod]
+        public void OverloadedPlusSign_CombineTwoSameSizedArrays_Count6()
+        {
+            //Arrange
+            CustomList<int> testCreation1 = new CustomList<int>() { 1, 4, 6 };
+            CustomList<int> testCreation2 = new CustomList<int>() { 2, 3, 9 };
+            //Act
+            CustomList<int> output = testCreation1 + testCreation2;
+            //Assert
+            Assert.AreEqual(6, output.Count);
+        }
+        [TestMethod]
+        public void OverloadedPlusSign_CombineTwoSameSizedArrays_Capacity20()
+        {
+            //Arrange
+            CustomList<int> testCreation1 = new CustomList<int>() { 1, 4, 6 };
+            CustomList<int> testCreation2 = new CustomList<int>() { 2, 3, 9 };
+            //Act
+            CustomList<int> output = testCreation1 + testCreation2;
+            //Assert
+            Assert.AreEqual(20, output.Capacity);
+        }
+        [TestMethod]
+        public void OverloadedPlusSign_CombineTwoSameSizedArrays_9AtFinalIndex()
+        {
+            //Arrange
+            CustomList<int> testCreation1 = new CustomList<int>() { 1, 4, 6 };
+            CustomList<int> testCreation2 = new CustomList<int>() { 2, 3, 9 };
+            //Act
+            CustomList<int> output = testCreation1 + testCreation2;
+            //Assert
+            Assert.AreEqual(9, output[output.Capacity -1]);
+        }
+        [TestMethod]
+        public void OverloadedPlusSign_CombineTwoDifferentSizedArrays_Count7()
+        {
+            //Arrange
+            CustomList<int> testCreation1 = new CustomList<int>() { 1, 4, 6 };
+            CustomList<int> testCreation2 = new CustomList<int>() { 2, 3, 9,7 };
+            //Act
+            CustomList<int> output = testCreation1 + testCreation2;
+            //Assert
+            Assert.AreEqual(7, output.Count);
+        }
+        [TestMethod]
+        public void OverloadedPlusSign_CombineTwoDifferentSizedArrays_Capacity20()
+        {
+            //Arrange
+            CustomList<int> testCreation1 = new CustomList<int>() { 1, 4, 6 };
+            CustomList<int> testCreation2 = new CustomList<int>() { 2, 3, 9,7 };
+            //Act
+            CustomList<int> output = testCreation1 + testCreation2;
+            //Assert
+            Assert.AreEqual(20, output.Capacity);
+        }
+        [TestMethod]
+        public void OverloadedPlusSign_CombineTwoDifferentSizedArrays_7AtFinalIndex()
+        {
+            //Arrange
+            CustomList<int> testCreation1 = new CustomList<int>() { 1, 4, 6 };
+            CustomList<int> testCreation2 = new CustomList<int>() { 2, 3, 9,7 };
+            //Act
+            CustomList<int> output = testCreation1 + testCreation2;
+            //Assert
+            Assert.AreEqual(7, output[output.Capacity - 1]);
+        }
     }
 }

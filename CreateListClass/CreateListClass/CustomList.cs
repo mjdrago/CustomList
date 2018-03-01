@@ -73,7 +73,14 @@ namespace CreateListClass
             }
             set
             {
-
+                if (i > capacity - 1)
+                {
+                    throw new IndexOutOfRangeException();
+                }
+                else
+                {
+                    data[i] = value;
+                }
             }
         }
         
@@ -231,7 +238,20 @@ namespace CreateListClass
         }
         public CustomList<T> Zip(CustomList<T> listToZip)
         {
-            return new CustomList<T>();
+            int maxCount = Math.Max(this.Count, listToZip.Count);
+            CustomList<T> output = new CustomList<T>();
+            for (int i = 0; i < maxCount; i++)
+            {
+                if (i < count)
+                {
+                    output.Add(data[i]);
+                }
+                if (i< listToZip.Count )
+                {
+                    output.Add(listToZip[i]);
+                }
+            }
+            return output;
         }
     }
 }

@@ -19,8 +19,6 @@ namespace CreateListClass
             //Console.WriteLine(foo[1]);
             //Console.WriteLine(foo.ToString());
             //Console.WriteLine(foo2.ToString());
-            CustomList<int> testCreation = new CustomList<int>() { 3, 1, 8, 5 };
-            testCreation.Remove(8);
             Console.ReadKey();
         }
     }

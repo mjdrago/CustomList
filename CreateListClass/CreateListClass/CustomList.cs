@@ -192,6 +192,16 @@ namespace CreateListClass
             data = newData;
         }
 
+        public override string ToString()
+        {
+            string outputString = count + "/" + capacity + " Spots Filled\n";
+            for (int i = 0; i < count; i++)
+            {
+                outputString += "Index " + i + ": " + data[i]+"\n";
+            }
+            return outputString;
+        }
+
 
 
         public IEnumerator<T> GetEnumerator()

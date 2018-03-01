@@ -331,7 +331,7 @@ namespace CreateListClassTest
             //Act
             string output = testCreation.ToString();
             //Assert
-            Assert.AreEqual("testCreation: 0/5 Spots Filled", output);
+            Assert.AreEqual("0/5 Spots Filled\n", output);
         }
         [TestMethod]
         public void ToString_SetCapacityInitation_StringWithNameAndHowFilled()
@@ -341,17 +341,17 @@ namespace CreateListClassTest
             //Act
             string output = testCreation.ToString();
             //Assert
-            Assert.AreEqual("testCreation: 0/15 Spots Filled", output);
+            Assert.AreEqual("0/15 Spots Filled\n", output);
         }
         [TestMethod]
         public void ToString_WithInitialValuesInitation_StringWithNameAndHowFilled()
         {
             //Arrange
-            CustomList<string> testCreation = new CustomList<string>(15) {"hello","you","are" };
+            CustomList<string> testCreation = new CustomList<string>() {"hello","you","are" };
             //Act
             string output = testCreation.ToString();
             //Assert
-            Assert.AreEqual("testCreation: 3/10 Spots Filled", output);
+            Assert.AreEqual("3/10 Spots Filled\nIndex 0: hello\nIndex 1: you\nIndex 2: are\n", output);
         }
     }
 }

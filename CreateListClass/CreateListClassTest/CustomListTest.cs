@@ -419,5 +419,162 @@ namespace CreateListClassTest
             //Assert
             Assert.AreEqual(7, output[output.Count - 1]);
         }
+        [TestMethod]
+        public void Zip_ZippingTwoEqualSizedArrays_Count6()
+        {
+            //Arrange
+            CustomList<int> testCreation1 = new CustomList<int>() { 1, 3, 5 };
+            CustomList<int> testCreation2 = new CustomList<int>() { 2, 4, 6 };
+            //Act
+            CustomList<int> output = testCreation1.Zip(testCreation2);
+            //Assert
+            Assert.AreEqual(6, output.Count);
+        }
+
+        [TestMethod]
+        public void Zip_ZippingTwoEqualSizedArrays_Capacity20()
+        {
+            //Arrange
+            CustomList<int> testCreation1 = new CustomList<int>() { 1, 3, 5 };
+            CustomList<int> testCreation2 = new CustomList<int>() { 2, 4, 6 };
+            //Act
+            CustomList<int> output = testCreation1.Zip(testCreation2);
+            //Assert
+            Assert.AreEqual(20, output.Capacity);
+        }
+
+        [TestMethod]
+        public void Zip_ZippingTwoEqualSizedArrays_Index2Has3()
+        {
+            //Arrange
+            CustomList<int> testCreation1 = new CustomList<int>() { 1, 3, 5 };
+            CustomList<int> testCreation2 = new CustomList<int>() { 2, 4, 6 };
+            //Act
+            CustomList<int> output = testCreation1.Zip(testCreation2);
+            //Assert
+            Assert.AreEqual(3, output[2]);
+        }
+        [TestMethod]
+        public void Zip_ZippingTwoEqualSizedArrays_LastIndexHas6()
+        {
+            //Arrange
+            CustomList<int> testCreation1 = new CustomList<int>() { 1, 3, 5 };
+            CustomList<int> testCreation2 = new CustomList<int>() { 2, 4, 6 };
+            //Act
+            CustomList<int> output = testCreation1.Zip(testCreation2);
+            //Assert
+            Assert.AreEqual(6, output[output.Count -1]);
+        }
+        [TestMethod]
+        public void Zip_ZippingTwoUnEqualSizedArraysFirstBigger_Count8()
+        {
+            //Arrange
+            CustomList<int> testCreation1 = new CustomList<int>() { 1, 3, 5, 7, 9 };
+            CustomList<int> testCreation2 = new CustomList<int>() { 2, 4, 6 };
+            //Act
+            CustomList<int> output = testCreation1.Zip(testCreation2);
+            //Assert
+            Assert.AreEqual(8, output.Count);
+        }
+        [TestMethod]
+        public void Zip_ZippingTwoUnEqualSizedArraysFirstBigger_Capacity20()
+        {
+            //Arrange
+            CustomList<int> testCreation1 = new CustomList<int>() { 1, 3, 5, 7, 9 };
+            CustomList<int> testCreation2 = new CustomList<int>() { 2, 4, 6 };
+            //Act
+            CustomList<int> output = testCreation1.Zip(testCreation2);
+            //Assert
+            Assert.AreEqual(20, output.Capacity);
+        }
+        [TestMethod]
+        public void Zip_ZippingTwoUnEqualSizedArraysFirstBigger_LastIndexHas9()
+        {
+            //Arrange
+            CustomList<int> testCreation1 = new CustomList<int>() { 1, 3, 5, 7, 9 };
+            CustomList<int> testCreation2 = new CustomList<int>() { 2, 4, 6 };
+            //Act
+            CustomList<int> output = testCreation1.Zip(testCreation2);
+            //Assert
+            Assert.AreEqual(9, output[output.Count -1]);
+        }
+        [TestMethod]
+        public void Zip_ZippingTwoUnEqualSizedArraysFirstBigger_2ndToLastIndexHas7()
+        {
+            //Arrange
+            CustomList<int> testCreation1 = new CustomList<int>() { 1, 3, 5, 7, 9 };
+            CustomList<int> testCreation2 = new CustomList<int>() { 2, 4, 6 };
+            //Act
+            CustomList<int> output = testCreation1.Zip(testCreation2);
+            //Assert
+            Assert.AreEqual(7, output[output.Count - 2]);
+        }
+        [TestMethod]
+        public void Zip_ZippingTwoUnEqualSizedArraysFirstBigger_3rdToLastIndexHas6()
+        {
+            //Arrange
+            CustomList<int> testCreation1 = new CustomList<int>() { 1, 3, 5, 7, 9 };
+            CustomList<int> testCreation2 = new CustomList<int>() { 2, 4, 6 };
+            //Act
+            CustomList<int> output = testCreation1.Zip(testCreation2);
+            //Assert
+            Assert.AreEqual(6, output[output.Count - 3]);
+        }
+
+        [TestMethod]
+        public void Zip_ZippingTwoUnEqualSizedArraysSecondBigger_Count8()
+        {
+            //Arrange
+            CustomList<int> testCreation1 = new CustomList<int>() { 1, 3, 5};
+            CustomList<int> testCreation2 = new CustomList<int>() { 2, 4, 6, 8, 10 };
+            //Act
+            CustomList<int> output = testCreation1.Zip(testCreation2);
+            //Assert
+            Assert.AreEqual(8, output.Count);
+        }
+        [TestMethod]
+        public void Zip_ZippingTwoUnEqualSizedArraysSecondBigger_Capacity20()
+        {
+            //Arrange
+            CustomList<int> testCreation1 = new CustomList<int>() { 1, 3, 5 };
+            CustomList<int> testCreation2 = new CustomList<int>() { 2, 4, 6, 8, 10 };
+            //Act
+            CustomList<int> output = testCreation1.Zip(testCreation2);
+            //Assert
+            Assert.AreEqual(20, output.Capacity);
+        }
+        [TestMethod]
+        public void Zip_ZippingTwoUnEqualSizedArraysSecondBigger_LastIndexHas9()
+        {
+            //Arrange
+            CustomList<int> testCreation1 = new CustomList<int>() { 1, 3, 5 };
+            CustomList<int> testCreation2 = new CustomList<int>() { 2, 4, 6, 8, 10 };
+            //Act
+            CustomList<int> output = testCreation1.Zip(testCreation2);
+            //Assert
+            Assert.AreEqual(10, output[output.Count - 1]);
+        }
+        [TestMethod]
+        public void Zip_ZippingTwoUnEqualSizedArraysSecondBigger_2ndToLastIndexHas7()
+        {
+            //Arrange
+            CustomList<int> testCreation1 = new CustomList<int>() { 1, 3, 5 };
+            CustomList<int> testCreation2 = new CustomList<int>() { 2, 4, 6, 8, 10 };
+            //Act
+            CustomList<int> output = testCreation1.Zip(testCreation2);
+            //Assert
+            Assert.AreEqual(8, output[output.Count - 2]);
+        }
+        [TestMethod]
+        public void Zip_ZippingTwoUnEqualSizedArraysSecondBigger_4thToLastIndexHas6()
+        {
+            //Arrange
+            CustomList<int> testCreation1 = new CustomList<int>() { 1, 3, 5 };
+            CustomList<int> testCreation2 = new CustomList<int>() { 2, 4, 6, 8, 10 };
+            //Act
+            CustomList<int> output = testCreation1.Zip(testCreation2);
+            //Assert
+            Assert.AreEqual(5, output[output.Count - 4]);
+        }
     }
 }

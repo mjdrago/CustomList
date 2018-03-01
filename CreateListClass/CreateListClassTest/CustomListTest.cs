@@ -384,7 +384,7 @@ namespace CreateListClassTest
             //Act
             CustomList<int> output = testCreation1 + testCreation2;
             //Assert
-            Assert.AreEqual(9, output[output.Capacity -1]);
+            Assert.AreEqual(9, output[output.Count -1]);
         }
         [TestMethod]
         public void OverloadedPlusSign_CombineTwoDifferentSizedArrays_Count7()
@@ -417,7 +417,7 @@ namespace CreateListClassTest
             //Act
             CustomList<int> output = testCreation1 + testCreation2;
             //Assert
-            Assert.AreEqual(7, output[output.Capacity - 1]);
+            Assert.AreEqual(7, output[output.Count - 1]);
         }
     }
 }

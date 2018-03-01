@@ -218,9 +218,18 @@ namespace CreateListClass
         }
         public static CustomList<T> operator +(CustomList<T> valueOne, CustomList<T> valueTwo)
         {
-            return new CustomList<T>();
+            CustomList<T> outputList = valueOne;
+            foreach (var inputValue in valueTwo)
+            {
+                outputList.Add(inputValue);
+            }
+            return outputList;
         }
         public static CustomList<T> operator -(CustomList<T> valueOne, CustomList<T> valueTwo)
+        {
+            return new CustomList<T>();
+        }
+        public CustomList<T> Zip(CustomList<T> listToZip)
         {
             return new CustomList<T>();
         }

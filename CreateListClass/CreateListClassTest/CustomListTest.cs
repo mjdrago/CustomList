@@ -576,5 +576,113 @@ namespace CreateListClassTest
             //Assert
             Assert.AreEqual(5, output[output.Count - 4]);
         }
+        [TestMethod]
+        public void OverloadingMinusSign_SubtractingASmallerArrayFromBiggerArray_Count3()
+        {
+            //Arrange
+            CustomList<int> testCreation1 = new CustomList<int>() { 5, 8, 7, 15, 21, 10 };
+            CustomList<int> testCreation2 = new CustomList<int>() { 15, 21, 10 };
+            //Act
+            CustomList<int> result = testCreation1 - testCreation2;
+            //Assert
+            Assert.AreEqual(3, result.Count);
+        }
+
+        [TestMethod]
+        public void OverloadingMinusSign_SubtractingASmallerArrayFromBiggerArray_Capacity20()
+        {
+            //Arrange
+            CustomList<int> testCreation1 = new CustomList<int>() { 5, 8, 7, 15, 21, 10 };
+            CustomList<int> testCreation2 = new CustomList<int>() { 15, 21, 10 };
+            //Act
+            CustomList<int> result = testCreation1 - testCreation2;
+            //Assert
+            Assert.AreEqual(20, result.Capacity);
+        }
+
+        [TestMethod]
+        public void OverloadingMinusSign_SubtractingASmallerArrayFromBiggerArray_LastIndex7()
+        {
+            //Arrange
+            CustomList<int> testCreation1 = new CustomList<int>() { 5, 8, 7, 15, 21, 10 };
+            CustomList<int> testCreation2 = new CustomList<int>() { 15, 21, 10 };
+            //Act
+            CustomList<int> result = testCreation1 - testCreation2;
+            //Assert
+            Assert.AreEqual(7, result[result.Count - 1]);
+        }
+
+        [TestMethod]
+        public void OverloadingMinusSign_SubtractingASmallerArrayFromBiggerArrayWithDoubles_Count4()
+        {
+            //Arrange
+            CustomList<int> testCreation1 = new CustomList<int>() { 5, 8, 15, 7, 15, 21, 10 };
+            CustomList<int> testCreation2 = new CustomList<int>() { 15, 21, 10 };
+            //Act
+            CustomList<int> result = testCreation1 - testCreation2;
+            //Assert
+            Assert.AreEqual(4, result.Count);
+        }
+
+        [TestMethod]
+        public void OverloadingMinusSign_SubtractingASmallerArrayFromBiggerArrayWithDoubles_Capacity20()
+        {
+            //Arrange
+            CustomList<int> testCreation1 = new CustomList<int>() { 5, 8, 15, 7, 15, 21, 10 };
+            CustomList<int> testCreation2 = new CustomList<int>() { 15, 21, 10 };
+            //Act
+            CustomList<int> result = testCreation1 - testCreation2;
+            //Assert
+            Assert.AreEqual(20, result.Capacity);
+        }
+
+
+        [TestMethod]
+        public void OverloadingMinusSign_SubtractingASmallerArrayFromBiggerArrayWithDoubles_Value15AtIndex2()
+        {
+            //Arrange
+            CustomList<int> testCreation1 = new CustomList<int>() { 5, 8, 15, 7, 15, 21, 10 };
+            CustomList<int> testCreation2 = new CustomList<int>() { 15, 21, 10 };
+            //Act
+            CustomList<int> result = testCreation1 - testCreation2;
+            //Assert
+            Assert.AreEqual(15, result[2]);
+        }
+        [TestMethod]
+        public void OverloadingMinusSign_SubtractingASmallerArrayNotInBiggerArrayWithDoubles_Count7()
+        {
+            //Arrange
+            CustomList<int> testCreation1 = new CustomList<int>() { 5, 8, 15, 7, 15, 21, 10 };
+            CustomList<int> testCreation2 = new CustomList<int>() { 5, 15, 10 };
+            //Act
+            CustomList<int> result = testCreation1 - testCreation2;
+            //Assert
+            Assert.AreEqual(7, result.Count);
+        }
+
+        [TestMethod]
+        public void OverloadingMinusSign_SubtractingASmallerArrayNotInBiggerArrayWithDoubles_Capacity20()
+        {
+            //Arrange
+            CustomList<int> testCreation1 = new CustomList<int>() { 5, 8, 15, 7, 15, 21, 10 };
+            CustomList<int> testCreation2 = new CustomList<int>() { 5, 15, 10 };
+            //Act
+            CustomList<int> result = testCreation1 - testCreation2;
+            //Assert
+            Assert.AreEqual(20, result.Capacity);
+        }
+
+
+        [TestMethod]
+        public void OverloadingMinusSign_SubtractingASmallerArrayNotInBiggerArrayWithDoubles_Value15AtIndex2()
+        {
+            //Arrange
+            CustomList<int> testCreation1 = new CustomList<int>() { 5, 8, 15, 7, 15, 21, 10 };
+            CustomList<int> testCreation2 = new CustomList<int>() { 5, 15, 10 };
+            //Act
+            CustomList<int> result = testCreation1 - testCreation2;
+            //Assert
+            Assert.AreEqual(10, result[result.Count - 1]);
+        }
     }
 }

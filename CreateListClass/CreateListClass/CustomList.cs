@@ -103,9 +103,9 @@ namespace CreateListClass
             }
             return false;
         }
-        private int IndexOf(T searchValue)
+        private int IndexOf(T searchValue, int startingValue = 0)
         {
-            for (int i = 0; i < count; i++)
+            for (int i = startingValue; i < count; i++)
             {
                 if (data[i].Equals(searchValue))
                 {
@@ -234,7 +234,66 @@ namespace CreateListClass
         }
         public static CustomList<T> operator -(CustomList<T> valueOne, CustomList<T> valueTwo)
         {
-            return new CustomList<T>();
+            int[] RangeToRemove = new int[0];
+            CustomList<T> output = new CustomList<T>(valueOne.Capacity);
+            if (valueOne.Count < valueTwo.Count)
+            {
+                throw new IndexOutOfRangeException();
+            }
+            else
+            {
+                RangeToRemove = FindRangeToRemove(valueOne, valueTwo);
+                if (RangeToRemove.Length == 0)
+                {
+                    output = valueOne;
+                }
+                else
+                {
+                    for (int i = 0; i < valueOne.Count; i++)
+                    {
+                        if (i<RangeToRemove[0]||i>RangeToRemove[RangeToRemove.Length - 1])
+                        {
+                            output.Add(valueOne[i]);
+                        }
+                    }
+                    
+                }
+            }
+            return output;
+        }
+        private static int[] FindRangeToRemove(CustomList<T> valueOne, CustomList<T> valueTwo)
+        {
+            int[] output = new int[0];
+            for (int i = 0; i <= valueOne.Count - valueTwo.Count; i++)
+            {
+                int[] indexValues = new int[valueTwo.Count];
+                for (int j = 0; j < valueTwo.Count; j++)
+                {
+                    indexValues[j] = valueOne.IndexOf(valueTwo[j], i);
+                }
+                if (CheckForRightArrayToRemove(indexValues))
+                {
+                    output = indexValues;
+                    break;
+                }
+            }
+
+            return output;
+        }
+        private static bool CheckForRightArrayToRemove(int[] potentialOutput)
+        {
+            for (int i = 0; i < potentialOutput.Length; i++)
+            {
+                if (potentialOutput[i] < 0)
+                {
+                    return false;
+                }
+                if (potentialOutput[i] - i != potentialOutput[0])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
         public CustomList<T> Zip(CustomList<T> listToZip)
         {

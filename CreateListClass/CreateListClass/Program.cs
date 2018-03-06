@@ -19,6 +19,10 @@ namespace CreateListClass
             //Console.WriteLine(foo[1]);
             //Console.WriteLine(foo.ToString());
             //Console.WriteLine(foo2.ToString());
+            CustomList<int> testCreation1 = new CustomList<int>() { 5, 8, 7, 15, 21, 10 };
+            CustomList<int> testCreation2 = new CustomList<int>() { 15, 21, 10 };
+            //Act
+            CustomList<int> result = testCreation1 - testCreation2;
             Console.ReadKey();
         }
     }
